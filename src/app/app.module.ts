@@ -5,15 +5,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { SpellbookComponent } from './spellbook/spellbook.component';
+import { MonstermanualComponent } from './monstermanual/monstermanual.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent}
+  {path: '', component: HomeComponent},
+  {path: 'spellbook', component: SpellbookComponent},
+  {path: 'monstermanual', component: MonstermanualComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SpellbookComponent,
+    MonstermanualComponent
   ],
   imports: [
     [RouterModule.forRoot(routes)],
