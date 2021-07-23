@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>SPELLBOOK</h1>
     <br>
     <form action="" #searchSpellForm="ngForm" (ngSubmit)='submit(searchSpellForm)'>
         <input type="text" name="user-spell-input" id="user-spell-input" ngModel>
@@ -14,7 +15,7 @@
     </form>
     <br>
     <section ng-container *ngIf="spellData" id="spell-info">
-        <li>Name: {{spellData.name}}</li>
+        <h2>{{spellData.name}}</h2>
         <ul *ngFor="let desc of descriptions">
             <p>{{desc}}</p>
         </ul>
