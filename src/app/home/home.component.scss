@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+html{
+    height: 99vh;
+    width: 100vw;
+    background-image: url('../resources/img/Yawning_Portal_1920x1080_Wallpaper.jpg');
+    background-position: bottom;
+}
+
+#homepage-title{
+    font-size: 65px;
+    color: #dfdfdf;
+    display: block;
+    width: 750px;
+    margin-top: 440px;
+    margin-left: 100px;
+}
+
+#homepage-text{
+    margin-bottom: 300px;
+    font-size: 25px;
+    color: #dfdfdf;
+    margin-left: 100px;
+    font-family: 'Open Sans', sans-serif;
+}
