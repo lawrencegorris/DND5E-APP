@@ -1,1 +1,53 @@
-<p>monstermanual works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>MONSTER MANUAL</h1>
+    <br>
+    <form action="" #searchSpellForm="ngForm" (ngSubmit)='submit(searchSpellForm)'>
+        <input type="text" name="user-spell-input" id="user-spell-input" ngModel>
+        <button id="spell-search-button">Click here to view monster data</button>
+    </form>
+    <br>
+    <section ng-container *ngIf="monsterData" id="monster-info">
+        <h2>{{monsterData.name}}</h2>  
+        <p>Size:{{monsterData.size}}</p>
+        <p>Type:{{monsterData.type}}</p>
+        <section id="stats">
+            <p>CR: {{monsterData.challenge_rating}}</p> 
+            <p>AC: {{monsterData.armor_class}}</p> 
+            <p>HP: {{monsterData.hit_points}}</p> 
+            <p>HD: {{monsterData.hit_dice}}</p>
+            <p>EXP: {{monsterData.xp}}</p>  
+        </section>
+        <section id="attributes">
+            <p>STR: {{monsterData.strength}}</p> 
+            <p>DEX: {{monsterData.dexterity}}</p> 
+            <p>CON: {{monsterData.constitution}}</p> 
+            <p>INT: {{monsterData.intelligence}}</p> 
+            <p>WIS: {{monsterData.wisdom}}</p> 
+            <p>CHA: {{monsterData.charisma}}</p> 
+        </section>
+        <section id="actions-abilities"> 
+            <h3>Actions:</h3>
+            <ul *ngFor="let action of actions">
+                <li>{{action.name}}: {{action.desc}}</li>
+            </ul>
+            <h3 *ngIf="monsterData.special_abilities != null">Special Abilities:</h3>
+            <ul  *ngFor="let specialAbility of specialAbilities">
+                <li>{{specialAbility.name}}: {{specialAbility.desc}}</li>
+            </ul>
+            <h3 *ngIf="monsterData.legendary_actions != null">Legendary Actions:</h3>
+            <ul *ngFor="let legendaryAction of legendaryActions">
+                <li>{{legendaryAction.name}}: {{legendaryAction.desc}}</li>
+            </ul>
+        </section>
+    </section>
+    
+</body>
+</html>
