@@ -7,13 +7,29 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="test"></div>
-    <p>spellbook works!</p>
     <br>
-    <form action="" #searchSpellForm="ngForm" (ngSubmit)='showSpellData(searchSpellForm)'>
+    <form action="" #searchSpellForm="ngForm" (ngSubmit)='submit(searchSpellForm)'>
         <input type="text" name="user-spell-input" id="user-spell-input" ngModel>
         <button id="spell-search-button">Click here to view spell info</button>
     </form>
+    <br>
+    <section ng-container *ngIf="spellData" id="spell-info">
+        <li>Name: {{spellData.name}}</li>
+        <ul *ngFor="let desc of descriptions">
+            <p>{{desc}}</p>
+        </ul>
+        <li>At higher level: {{spellData.higher_level}}</li>
+        <li>Range: {{spellData.range}}</li>
+        <li>Components: {{spellData.components}}</li>
+        <li>Duration: {{spellData.duration}}</li>
+        <li>Casting Time: {{spellData.casting_time}}</li>
+        <li>Level: {{spellData.level}}</li>
+        <li>School: {{spellData.school['name']}}</li>
+        <ul *ngFor="let class of classes">
+            <li>Class: {{class}}</li>
+        </ul>
+        <p>Please consult your Player Handbook or other resources for more info each spell ;)</p>
+    </section>
     
 </body>
 </html>

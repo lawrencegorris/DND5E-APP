@@ -9,15 +9,30 @@ import { NgForm } from '@angular/forms';
 })
 
 export class SpellbookComponent{
+  
+  spellData:any;
+  classes: any[] = [];
+  descriptions: any[] = [];
 
- showSpellData(form: NgForm){
 
-  //fetch API data each time form is submitted
-   let userInput = form.value["user-spell-input"];
-    //document.querySelector('#test')!.innerHTML = userInput;
-    this.http.get(`https://www.dnd5eapi.co/api/spells/${userInput}`).subscribe(data=>{
-      console.log('data:', data)
-    });
+  submit(form: NgForm){
+    let userInput = form.value["user-spell-input"];
+    userInput.toLowerCase();
+    this.classes = [];
+    this.descriptions = [];
+    this.http.get(`https://www.dnd5eapi.co/api/spells/${userInput}`).subscribe(data => {
+    this.spellData = data;
+
+      for(let i = 0; i < this.spellData.classes.length; i++){
+        this.classes.push(this.spellData.classes[i]['name'])
+        console.log(this.classes)}
+
+      for(let i = 0; i < this.spellData.desc.length; i++){
+        this.descriptions.push(this.spellData.desc[i])
+        console.log(this.descriptions[i])}
+    })
+
+    
   }
   constructor(private http: HttpClient){};
 }
